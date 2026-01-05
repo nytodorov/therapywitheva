@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Dropdown Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .dropdown {
+            border: 2px solid #4ECDC4;
+            padding: 10px;
+            margin: 20px 0;
+            background: white;
+        }
+        .dropdown-trigger {
+            padding: 15px;
+            background: #4ECDC4;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f0f0f0;
+        }
+        .dropdown.active .dropdown-menu {
+            max-height: 300px;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 12px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ddd;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            background: #ffe66d;
+            border-radius: 8px;
+        }
+        .click-count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Dropdown Test</h1>
+    
+    <div class="status">
+        <p>Clicks on dropdown: <span class="click-count" id="clickCount">0</span></p>
+        <p>Screen width: <span id="screenWidth"></span>px</p>
+        <p>Status: <span id="status">Waiting...</span></p>
+    </div>
+    
+    <div class="dropdown" id="testDropdown">
+        <div class="dropdown-trigger">
+            Click Me - Терапия ▼
+        </div>
+        <div class="dropdown-menu">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const dropdown = document.getElementById('testDropdown');
+        const clickCountEl = document.getElementById('clickCount');
+        const statusEl = document.getElementById('status');
+        const screenWidthEl = document.getElementById('screenWidth');
+        
+        screenWidthEl.textContent = window.innerWidth;
+        
+        // Single click handler on document with capture phase
+        document.addEventListener('click', (e) => {
+            const clickedDropdown = e.target.closest('#testDropdown');
+            const clickedMenuItem = e.target.closest('.dropdown-menu a');
+            
+            if (clickedDropdown && !clickedMenuItem) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                clickCount++;
+                clickCountEl.textContent = clickCount;
+                
+                const isActive = dropdown.classList.contains('active');
+                dropdown.classList.toggle('active');
+                
+                statusEl.textContent = isActive ? 'Closed!' : 'Opened!';
+                statusEl.style.color = isActive ? 'red' : 'green';
+                
+                return false;
+            }
+        }, true);
+        
+        console.log('Test page loaded - v1.0');
+    </script>
+</body>
+</html>
+

@@ -1,3 +1,39 @@
+// CRITICAL: Mobile dropdown handler - MUST BE FIRST - runs immediately on script load
+(function() {
+    'use strict';
+    
+    // Add listener immediately with capture phase
+    document.addEventListener('click', function(e) {
+        // Only on mobile
+        if (window.innerWidth > 768) return;
+        
+        // Check if clicked in dropdown area (but not on submenu items)
+        const dropdown = e.target.closest('.dropdown');
+        const isSubMenuItem = e.target.closest('.dropdown-menu a');
+        
+        if (dropdown && !isSubMenuItem) {
+            // IMMEDIATELY stop all event propagation
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            const isActive = dropdown.classList.contains('active');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown').forEach(function(d) {
+                d.classList.remove('active');
+            });
+            
+            // Open this one if it wasn't active
+            if (!isActive) {
+                dropdown.classList.add('active');
+            }
+            
+            return false;
+        }
+    }, true); // Capture phase - runs before bubble phase
+})();
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
@@ -10,50 +46,26 @@ if (mobileMenuBtn) {
     });
 }
 
-// Simple mobile dropdown handler - must be first
-document.addEventListener('click', (e) => {
-    // Check if we're on mobile
-    if (window.innerWidth > 768) return;
-    
-    // Check if clicked anywhere inside a dropdown (link or arrow or anywhere)
-    const dropdown = e.target.closest('.dropdown');
-    if (dropdown && !e.target.closest('.dropdown-menu')) {
-        // Clicked on the dropdown toggle area (not the menu items)
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        
-        const isActive = dropdown.classList.contains('active');
-        
-        // Close all dropdowns
-        document.querySelectorAll('.dropdown').forEach(d => {
-            d.classList.remove('active');
-        });
-        
-        // Toggle this one
-        if (!isActive) {
-            dropdown.classList.add('active');
+// Close mobile menu when clicking outside dropdown areas
+if (navMenu) {
+    navMenu.addEventListener('click', (e) => {
+        // Handle dropdown menu item clicks
+        const dropdownMenuItem = e.target.closest('.dropdown-menu a');
+        if (dropdownMenuItem) {
+            navMenu.classList.remove('active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            return;
         }
         
-        return false;
-    }
-    
-    // Check if clicked on dropdown menu item
-    const dropdownMenuItem = e.target.closest('.dropdown-menu a');
-    if (dropdownMenuItem) {
-        navMenu.classList.remove('active');
-        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-        return;
-    }
-    
-    // Check if clicked on regular nav link
-    const regularLink = e.target.closest('.nav-menu > li:not(.dropdown) > .nav-link');
-    if (regularLink) {
-        navMenu.classList.remove('active');
-        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-    }
-}, true);
+        // Handle regular nav link clicks (non-dropdown)
+        const regularLink = e.target.closest('.nav-menu > li:not(.dropdown) > .nav-link');
+        if (regularLink) {
+            navMenu.classList.remove('active');
+            if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+        }
+    });
+}
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');

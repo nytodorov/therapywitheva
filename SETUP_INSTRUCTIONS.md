@@ -27,7 +27,7 @@ therapywitheva/
 
 In `index.html`, find and update:
 - Phone number: Search for `+359 886 080 070`
-- Email: Search for `contacts@therapywitheva.com`
+- Email: Search for `evaedaneva@gmail.com`
 - Location: Search for `София, България`
 
 ### 2. Update Website Title and Meta Tags

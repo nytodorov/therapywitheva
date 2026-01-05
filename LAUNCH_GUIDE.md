@@ -24,7 +24,7 @@ Open `index.html` and search for these items to update:
 | Item | Search For | Update To |
 |------|------------|-----------|
 | Phone | `+359 886 080 070` | Your phone number |
-| Email | `contacts@therapywitheva.com` | Your email |
+| Email | `evaedaneva@gmail.com` | Your email |
 | Location | `София, България` | Your location |
 
 ---

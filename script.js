@@ -15,14 +15,14 @@ document.addEventListener('click', (e) => {
     // Check if we're on mobile
     if (window.innerWidth > 768) return;
     
-    // Check if clicked on dropdown link
-    const dropdownLink = e.target.closest('.dropdown > .nav-link');
-    if (dropdownLink) {
+    // Check if clicked anywhere inside a dropdown (link or arrow or anywhere)
+    const dropdown = e.target.closest('.dropdown');
+    if (dropdown && !e.target.closest('.dropdown-menu')) {
+        // Clicked on the dropdown toggle area (not the menu items)
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
         
-        const dropdown = dropdownLink.closest('.dropdown');
         const isActive = dropdown.classList.contains('active');
         
         // Close all dropdowns

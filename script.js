@@ -1,6 +1,7 @@
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
 
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
@@ -9,45 +10,48 @@ if (mobileMenuBtn) {
     });
 }
 
-// Handle all navigation clicks with event delegation
-if (navMenu) {
-    navMenu.addEventListener('click', (e) => {
-        const clickedLink = e.target.closest('.nav-link');
-        const clickedDropdown = e.target.closest('.dropdown');
-        const clickedDropdownMenuItem = e.target.closest('.dropdown-menu a');
-        
-        // Handle dropdown menu item clicks
-        if (clickedDropdownMenuItem) {
-            navMenu.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-            return;
-        }
-        
-        // Handle dropdown toggle on mobile
-        if (clickedDropdown && clickedLink && window.innerWidth <= 768) {
+// Handle dropdown toggle on mobile
+document.querySelectorAll('.dropdown > .nav-link').forEach(dropdownLink => {
+    dropdownLink.addEventListener('click', (e) => {
+        // Only handle on mobile
+        if (window.innerWidth <= 768) {
             e.preventDefault();
+            e.stopImmediatePropagation();
             
-            clickedDropdown.classList.toggle('active');
+            const dropdown = dropdownLink.closest('.dropdown');
+            const wasActive = dropdown.classList.contains('active');
             
-            // Close other dropdowns
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                if (dropdown !== clickedDropdown) {
-                    dropdown.classList.remove('active');
-                }
+            // Close all dropdowns first
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('active');
             });
-            return;
+            
+            // Toggle this dropdown
+            if (!wasActive) {
+                dropdown.classList.add('active');
+            }
         }
-        
-        // Handle regular nav link clicks (non-dropdown)
-        if (clickedLink && !clickedDropdown) {
-            navMenu.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-        }
+    }, true); // Use capture phase
+});
+
+// Handle dropdown menu item clicks
+document.querySelectorAll('.dropdown-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
     });
-}
+});
+
+// Handle regular nav link clicks (non-dropdown)
+document.querySelectorAll('.nav-menu > li:not(.dropdown) > .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+    });
+});
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');

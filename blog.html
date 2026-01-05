@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Блог за психотерапия, психично здраве и лично развитие от Ева Данева">
+    <meta name="keywords" content="психотерапия блог, психично здраве, лично развитие, Ева Данева, щастие, тревожност">
+    <meta name="author" content="Ева Данева">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://therapywitheva.com/blog.html">
+    <meta property="og:title" content="Блог - Therapy with Eva">
+    <meta property="og:description" content="Статии за психотерапия, психично здраве и лично развитие">
+    <meta property="og:image" content="https://therapywitheva.com/eva-photo.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <title>Блог - Therapy with Eva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .blog-page {
+            padding: 140px 0 80px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+        
+        .blog-hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .blog-hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        
+        .blog-hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        
+        .blog-hero .underline {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+            margin: 0 auto;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .blog-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 250px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 32px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .blog-card-excerpt {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            flex: 1;
+        }
+        
+        .blog-card-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+        
+        .blog-card-btn:hover {
+            background: var(--primary-dark);
+            transform: translateX(4px);
+        }
+        
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 40px;
+            }
+            
+            .blog-hero p {
+                font-size: 18px;
+            }
+            
+            .blog-card-image {
+                height: 200px;
+            }
+            
+            .blog-card-content {
+                padding: 24px;
+            }
+            
+            .blog-card-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                    </svg>
+                    <span>THERAPY<br>WITH<br>EVA</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Начало</a></li>
+                    <li class="dropdown">
+                        <a href="za-terapiyata.html" class="nav-link">Терапия <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="za-terapiyata.html">За терапията</a></li>
+                            <li><a href="terapiya-s-detsa.html">Терапия с деца</a></li>
+                            <li><a href="individualna-terapiya.html">Индивидуална терапия</a></li>
+                            <li><a href="onlain-konsultatsiya.html">Онлайн консултация</a></li>
+                            <li><a href="index.html#help">С какво мога да помогна</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" class="nav-link active">Блог</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">Контакти</a></li>
+                    <li><a href="chzv.html" class="nav-link">ЧЗВ</a></li>
+                    <li class="language-switcher">
+                        <button class="lang-btn" aria-label="Change language">🌐</button>
+                        <ul class="lang-dropdown">
+                            <li><a href="#" data-lang="bg" class="lang-option active">BG</a></li>
+                            <li><a href="#" data-lang="en" class="lang-option">EN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Page -->
+    <section class="blog-page">
+        <div class="container">
+            <div class="blog-hero">
+                <h1>Блог</h1>
+                <p>Статии за психотерапия, психично здраве и лично развитие</p>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="blog/how-to-be-happy.jpg" alt="Как да бъдем по-щастливи" onerror="this.style.display='none'">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">Как да бъдем по-щастливи: Пътешествие към удовлетворението</h2>
+                        <p class="blog-card-excerpt">Щастието е състояние, към което всички ние се стремим. То не е дестинация, а пътуване, изпълнено с лични открития и усилия.</p>
+                        <a href="blog/kak-da-budem-po-shtastlivi.html" class="blog-card-btn">Прочети повече</a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="blog/understanding-anxiety.jpg" alt="Разбиране на Здравната тревожност" onerror="this.style.display='none'">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">Разбиране на Здравната тревожност: Как да я разпознаем и управляваме ефективно</h2>
+                        <p class="blog-card-excerpt">Здравната тревожност, понякога наричана хипохондрия или тревожно разстройство по отношение на болести, представлява прекомерно безпокойство относно наличието на сериозно заболяване.</p>
+                        <a href="blog/razbirane-na-zdravnata-trevozhnost.html" class="blog-card-btn">Прочети повече</a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="blog/erectile-disfynction.jpg" alt="Еректилна дисфункция и клиент-центрирана терапия" onerror="this.style.display='none'">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">Еректилна дисфункция и клиент-центрирана терапия: Как терапията може да помогне</h2>
+                        <p class="blog-card-excerpt">Еректилната дисфункция (ЕД) е състояние, което засяга много мъже по света, и може да има сериозно въздействие върху самооценката, самочувствието и взаимоотношенията.</p>
+                        <a href="blog/erektilna-disfunktsia-i-terapiya.html" class="blog-card-btn">Прочети повече</a>
+                    </div>
+                </article>
+                
+                <!-- Article 4 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="blog/separation-and-divorce.jpg" alt="Раздяла и развод" onerror="this.style.display='none'">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">Раздяла и развод: Как клиент-центрираната терапия може да подкрепи възстановяването и растежа</h2>
+                        <p class="blog-card-excerpt">Раздялата и разводът са едни от най-големите и предизвикателни преходи в живота. Те водят до емоционален стрес, практични промени и често до дълбоко усещане за загуба.</p>
+                        <a href="blog/razdyala-i-razvod.html" class="blog-card-btn">Прочети повече</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                        </svg>
+                        <span>THERAPY<br>WITH<br>EVA</span>
+                    </a>
+                    <p class="footer-name">Ева Данева</p>
+                    <p class="footer-phone">+359 886 080 070</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2026 Therapy with Eva</p>
+                    <a href="obshti-uslovia.html" class="footer-link">Общи Условия</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

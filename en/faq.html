@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently asked questions about psychotherapy - Eva Daneva">
+    <meta name="keywords" content="psychotherapy, FAQ, therapist, psychologist, Sofia, Eva Daneva">
+    <meta name="author" content="Eva Daneva">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://therapywitheva.com/en/faq.html">
+    <meta property="og:title" content="FAQ - Therapy with Eva">
+    <meta property="og:description" content="Answers to frequently asked questions about therapy for children and adults">
+    <meta property="og:image" content="https://therapywitheva.com/eva-photo.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    
+    <title>FAQ - Therapy with Eva</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* FAQ Specific Styles */
+        .faq-section {
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(255, 230, 109, 0.05) 100%);
+            min-height: 100vh;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 40px;
+            padding: 12px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(78, 205, 196, 0.3);
+        }
+        
+        .back-to-home:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(78, 205, 196, 0.4);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .faq-header p {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 60px;
+        }
+
+        .faq-category-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-category-title::before {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 28px 32px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .faq-question::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-color);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover .faq-question::before,
+        .faq-item.active .faq-question::before {
+            transform: scaleY(1);
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-question-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary-dark);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 32px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 32px 28px 32px;
+        }
+
+        .faq-answer p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Animation for FAQ items */
+        .faq-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.15s; }
+        .faq-item:nth-child(3) { animation-delay: 0.2s; }
+        .faq-item:nth-child(4) { animation-delay: 0.25s; }
+        .faq-item:nth-child(5) { animation-delay: 0.3s; }
+        .faq-item:nth-child(6) { animation-delay: 0.35s; }
+        .faq-item:nth-child(7) { animation-delay: 0.4s; }
+        .faq-item:nth-child(8) { animation-delay: 0.45s; }
+        .faq-item:nth-child(9) { animation-delay: 0.5s; }
+        .faq-item:nth-child(10) { animation-delay: 0.55s; }
+        .faq-item:nth-child(11) { animation-delay: 0.6s; }
+        .faq-item:nth-child(12) { animation-delay: 0.65s; }
+        .faq-item:nth-child(13) { animation-delay: 0.7s; }
+        .faq-item:nth-child(14) { animation-delay: 0.75s; }
+
+        /* CTA Section */
+        .faq-cta {
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faq-cta h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        .faq-cta .cta-btn {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .faq-cta .cta-btn:hover {
+            background: var(--secondary-color);
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .faq-header h1 {
+                font-size: 36px;
+            }
+
+            .faq-category-title {
+                font-size: 24px;
+            }
+
+            .faq-question {
+                padding: 20px 20px;
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 20px 20px;
+            }
+
+            .faq-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 18px;
+            }
+
+            .faq-cta {
+                padding: 40px 20px;
+            }
+
+            .faq-cta h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                    </svg>
+                    <span>THERAPY<br>WITH<br>EVA</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="therapy.html" class="nav-link">Therapy <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="therapy.html">About Therapy</a></li>
+                            <li><a href="child-therapy.html">Child Therapy</a></li>
+                            <li><a href="individual-therapy.html">Individual Therapy</a></li>
+                            <li><a href="online-consultation.html">Online Consultation</a></li>
+                            <li><a href="index.html#help">How I Can Help</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">Contact</a></li>
+                    <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+                    <li class="language-switcher">
+                        <button class="lang-btn" aria-label="Change language">🌐</button>
+                        <ul class="lang-dropdown">
+                            <li><a href="#" data-lang="bg" class="lang-option">BG</a></li>
+                            <li><a href="#" data-lang="en" class="lang-option active">EN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <a href="index.html" class="back-to-home">← Back to Home</a>
+            
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Answers to the most frequently asked questions about therapy for children and adults</p>
+                <div class="underline center"></div>
+            </div>
+
+            <div class="faq-container">
+                <!-- Children Therapy Questions -->
+                <div class="faq-category">
+                    <h2 class="faq-category-title">For Children:</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What age is appropriate for a child to start therapy?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy can begin at almost any age, depending on the child's developmental stage and the challenges they are facing. For toddlers and preschool-aged children, therapy often involves play-based approaches, while older children can engage in talk therapy or creative techniques. Early intervention can be particularly effective in addressing emotional or behavioral concerns.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">How can therapy help with school-related issues like anxiety or refusal to attend?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy can help children identify the root cause of their anxiety—whether it's fear of failure, bullying, or separation anxiety—and develop coping strategies. Therapists work with children to build confidence, regulate emotions, and practice social or problem-solving skills. Parents and teachers are often involved to ensure a supportive environment across settings.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What happens during a child's therapy session?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Child therapy is tailored to their age and needs. Sessions often involve play, storytelling, drawing, or games to help children express their thoughts and emotions in a way they find comfortable. For older children, sessions may include structured conversations, role-playing, or cognitive-behavioral techniques to address specific issues. The focus is on creating a safe, non-judgmental space.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What role do parents play in the therapy process?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Parents are usually a critical part of the therapy process. In many cases, they participate in sessions to learn how to support their child at home. A therapist might offer strategies for managing behavior, improving communication, or navigating family dynamics. In some cases, the therapy might involve separate parent sessions to address family-wide challenges.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Can therapy help with conditions like ADHD or autism?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, therapy can be highly effective in supporting children with ADHD, autism, and other neurodevelopmental conditions. Behavioral therapy can help with managing impulsivity or frustration, while social skills training can improve relationships with peers. For autism, therapy may include sensory strategies or interventions to help the child navigate their environment with greater confidence.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">How long does therapy for children usually last?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The duration varies depending on the child's challenges and progress. Some children benefit from short-term therapy of 8–12 weeks, while others with more complex needs may require longer-term support. Regular progress reviews help ensure the therapy is meeting its goals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adult Therapy Questions -->
+                <div class="faq-category">
+                    <h2 class="faq-category-title">For Adults:</h2>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">How can psychotherapy help with anxiety, stress, or panic attacks?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy provides a structured environment to explore triggers for anxiety or stress and develop healthy coping mechanisms. Techniques like cognitive-behavioral therapy (CBT) can help identify and challenge negative thought patterns, while mindfulness-based strategies can reduce physical symptoms like tension or racing thoughts.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What issues can therapy help with aside from mental health conditions?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy isn't just for mental health diagnoses. It can help with personal growth, improving communication, navigating life transitions (e.g., career changes, parenthood), or resolving conflicts in relationships. It's a tool for self-discovery and empowerment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">Is online therapy effective?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, research shows that online therapy can be as effective as in-person sessions for many issues, including anxiety, depression, and relationship challenges. It offers flexibility and accessibility, particularly for those with busy schedules or living in remote areas. However, some people may still prefer face-to-face interaction for certain issues, especially those involving trauma or deep relational work.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">How do I know if therapy is working for me?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Progress in therapy can look different for everyone. Some signs include improved mood, better communication, reduced symptoms, or feeling more in control of your emotions. Open communication with your therapist about your goals and expectations is key to ensuring therapy is effective.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What happens if I don't feel a connection with my therapist?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The therapeutic relationship is one of the most important factors in successful therapy. If you don't feel comfortable or understood by your therapist, it's okay to discuss these concerns. A good therapist will welcome feedback. If the connection still doesn't feel right, it's okay to seek another therapist—finding the right fit is crucial.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What is the typical duration of therapy for adults?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy duration depends on the individual's needs and goals. Some people benefit from short-term therapy (6–12 sessions) to address specific issues, while others with deeper concerns or ongoing personal growth objectives may engage in therapy for months or even years. It's a collaborative decision between the client and therapist.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">How can therapy help with interpersonal or family conflicts?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy provides a neutral space to explore relationship dynamics, identify sources of tension, and develop healthier ways of communicating. Whether working individually or with family members, therapy can help you understand others' perspectives, establish boundaries, and foster mutual respect.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span class="faq-question-text">What if I don't have a specific problem but want to explore personal growth?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Therapy is an excellent space for self-exploration and personal development. A therapist can help you gain deeper insight into your values, motivations, and patterns of behavior, fostering growth and self-empowerment even in the absence of a specific issue.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="faq-cta">
+                <h3>Have Questions or Want to Book an Appointment?</h3>
+                <a href="index.html#contacts" class="cta-btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                        </svg>
+                        <span>THERAPY<br>WITH<br>EVA</span>
+                    </a>
+                    <p class="footer-name">Eva Daneva</p>
+                    <p class="footer-phone">+359 886 080 070</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2026 Therapy with Eva</p>
+                    <a href="terms.html" class="footer-link">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Open first FAQ item by default
+        if (document.querySelector('.faq-item')) {
+            document.querySelector('.faq-item').classList.add('active');
+        }
+    </script>
+</body>
+</html>
+

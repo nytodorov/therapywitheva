@@ -1,0 +1,40 @@
+IMAGE REQUIREMENTS FOR THERAPY WITH EVA WEBSITE
+================================================
+
+You need to add the following image to complete the website:
+
+📸 eva-photo.jpg
+----------------
+Location: Root directory of the project
+Recommended specifications:
+- Format: JPG or PNG
+- Size: 800x800 pixels minimum (square format preferred)
+- File size: Under 500KB (optimize for web)
+- Content: Professional photo of Eva Daneva
+- Quality: High resolution, well-lit, professional appearance
+
+Usage:
+- This photo appears in the HERO section (main page banner)
+- Also appears in the ABOUT section
+
+Tips for the photo:
+✓ Use a professional headshot or upper body shot
+✓ Ensure good lighting and clear focus
+✓ Neutral or professional background
+✓ Warm, approachable expression
+✓ Professional attire
+
+Image Optimization Tools:
+- TinyPNG (https://tinypng.com/) - Free compression
+- Squoosh (https://squoosh.app/) - Google's image optimizer
+- ImageOptim (Mac) - Desktop app for optimization
+
+Alternative:
+If you don't have a photo ready, you can use a placeholder service temporarily:
+- https://placeholder.com/
+- https://via.placeholder.com/800x800
+
+Once you add eva-photo.jpg to the root directory, the website will automatically display it!
+
+For more information, see SETUP_INSTRUCTIONS.md
+

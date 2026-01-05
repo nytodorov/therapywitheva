@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Общи условия за използване на Therapy with Eva - Условия за ползване на услугите на психотерапевт Ева Данева.">
+    <meta name="keywords" content="общи условия, therapy with eva, психотерапия, условия за ползване">
+    <meta name="author" content="Ева Данева">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <title>Общи Условия - Therapy with Eva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .terms-page {
+            padding: 140px 0 80px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+        
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .terms-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .terms-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        
+        .terms-header .underline {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+            margin: 0 auto;
+        }
+        
+        .terms-content {
+            background: var(--bg-white);
+            padding: 60px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .terms-intro {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+        }
+        
+        .terms-section h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            padding-left: 16px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .terms-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+        
+        .terms-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .terms-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            padding-left: 32px;
+            position: relative;
+        }
+        
+        .terms-section li::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .terms-contact {
+            background: var(--primary-light);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .terms-contact p {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .terms-contact a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .terms-contact a:hover {
+            color: var(--text-dark);
+        }
+        
+        .terms-footer-note {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid var(--bg-light);
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 40px;
+            padding: 12px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(78, 205, 196, 0.3);
+        }
+        
+        .back-to-home:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(78, 205, 196, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .terms-page {
+                padding: 100px 0 60px;
+            }
+            
+            .terms-header h1 {
+                font-size: 32px;
+            }
+            
+            .terms-content {
+                padding: 40px 24px;
+            }
+            
+            .terms-section h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo" style="text-decoration: none;">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                    </svg>
+                    <span>THERAPY<br>WITH<br>EVA</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#home" class="nav-link">Начало</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#therapy" class="nav-link">Терапия <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#therapy">За терапията</a></li>
+                            <li><a href="index.html#help">С какво мога да помогна</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html" class="nav-link">Блог</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">Контакти</a></li>
+                    <li><a href="chzv.html" class="nav-link">ЧЗВ</a></li>
+                    <li class="language-switcher">
+                        <button class="lang-btn" aria-label="Change language">🌐</button>
+                        <ul class="lang-dropdown">
+                            <li><a href="#" data-lang="bg" class="lang-option active">BG</a></li>
+                            <li><a href="#" data-lang="en" class="lang-option">EN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms Page Content -->
+    <section class="terms-page">
+        <div class="terms-container">
+            <a href="index.html" class="back-to-home">← Обратно към началото</a>
+            
+            <div class="terms-header">
+                <h1>Общи Условия</h1>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="terms-content">
+                <div class="terms-intro">
+                    <p><strong>Общи условия за използване на Therapy With Eva</strong></p>
+                    <p>Настоящите общи условия уреждат условията за използване на www.therapywitheva.com, по-долу за краткост „уебсайта". Уебсайтът се управлява от Ева Данева регистрирана като упражняваща свободна професия, по-долу за краткост „Оператор".</p>
+                    
+                    <div class="terms-contact">
+                        <p>При необходимост можете да се свържете с нас посредством следните контакти:</p>
+                        <p>Имейл: <a href="mailto:contacts@therapywitheva.com">contacts@therapywitheva.com</a></p>
+                        <p>Телефон: <a href="tel:+359886080070">+359 886 080 070</a></p>
+                    </div>
+                    
+                    <p>Чрез използването на Уебсайта потребителят се съгласява с настоящите общи условия. Ако не сте съгласни със същите, следва да се въздържате от използване на Уебсайта.</p>
+                </div>
+                
+                <div class="terms-section">
+                    <h2>1. Интелектуална собственост</h2>
+                    <p><strong>1.1.</strong> Всички права върху интелектуалната собственост по отношение на информационните ресурси и съдържанието на уебсайта се Упражняват от Оператора. Същите са защитени от Закона за авторското право и сродните му права и всяко използване на съдържание от Уебсайта без съгласието на Оператора е нарушение на закона, от което може да последва гражданска, административно наказателна или наказателна отговорност.</p>
+                    
+                    <p><strong>1.2.</strong> При копиране или възпроизвеждане на информация вън от допустимото, както и при всяко друго нарушение на правата на интелектуална собственост върху ресурсите на Оператора, Операторът има правото да претендира обезщетение и за претърпените преки и косвени вреди в пълен размер.</p>
+                </div>
+                
+                <div class="terms-section">
+                    <h2>2. Ограничаване на отговорността</h2>
+                    <p><strong>2.1.</strong> Операторът предприема необходимите мерки, за да поддържа съдържанието на Уебсайта актуално, но не носи отговорност за действителната актуалност на същото. Във връзка с това Операторът не носи отговорност за вреди, в това число преки и косвени вреди, включително пропуснати ползи, които потребител на Уебсайта би понесъл при каквито и да е обстоятелства, свързани с публикуваното съдържание на Уебсайта и достъпа до същия. Използвайки Уебсайта, потребителите поемат всички рискове, свързани с това, включително всеки риск за крайни потребителски устройства, софтуер или данни на потребителите.</p>
+                    
+                    <p><strong>2.2.</strong> Доколкото в съдържанието на Уебсайта се съдържат препратки към съдържание, позиционирано извън същия потребителят е запознат с факта, че Операторът няма контрол върху същото и не носи отговорност за последиците от активиране на препратки, водещи извън Уебсайта.</p>
+                    
+                    <p>Операторът не носи отговорност за злонамерени действия от страна на трети лица, обект на които би могъл да стане потребителя, при използване на Уебсайта. Потребителят използва Уебсайта на своя отговорност.</p>
+                </div>
+                
+                <div class="terms-section">
+                    <h2>3. Регистрация на потребители</h2>
+                    <p><strong>3.1.</strong> Операторът запазва правото си да предоставя част от съдържанието на Уебсайта единствено на потребители, които са регистрирали свой потребителски профил на Уебсайта. Съответното съдържание, ограничено единствено до регистрирани потребители, следва във всеки един момент да бъде обозначено като такова от страна на Оператора.</p>
+                    
+                    <p><strong>3.2.</strong> При създаване на потребителски профил потребителят се съгласява, че Операторът ще обработва неговите лични данни съобразно с правилата на Политиката за защита на лични данни, публикувана на Уебсайта.</p>
+                </div>
+                
+                <div class="terms-section">
+                    <h2>4. Използване на уебсайта</h2>
+                    <p><strong>4.1.</strong> Доколкото Операторът е предвидил възможност за потребители да качват съдържание в Уебсайта, същите следва да не качват клеветническо, нецензурирано, обидно, порнографско или по друг начин незаконно или противоречащо на морала съдържание.</p>
+                    
+                    <p><strong>4.2.</strong> Потребителите следва да използват Уебсайта добросъвестно, в това число да не предприемат злонамерени действия, които да могат да се отразят на достъпността на съдържанието за трети лица или използването на Уебсайта изобщо.</p>
+                </div>
+                
+                <div class="terms-section">
+                    <h2>5. Други</h2>
+                    <p><strong>5.1.</strong> Операторът запазва правото си да изменя настоящите общи условия по свое усмотрение като във всеки един момент актуалните условия за ползване на Уебсайта ще бъдат публикувани на същия.</p>
+                    
+                    <p><strong>5.2.</strong> По всички неуредени от настоящите Общи условия въпроси се прилагат разпоредбите на действащото законодателство на Република България.</p>
+                </div>
+                
+                <div class="terms-footer-note">
+                    <p>Тези общи условия са изготвени с помощта на <a href="https://obshti-uslovia.com" target="_blank" rel="noopener">https://obshti-uslovia.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="logo" style="text-decoration: none;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 15L35 17L27.5 24L30 35L20 29L10 35L12.5 24L5 17L15 15L20 5Z" fill="#4ECDC4"/>
+                        </svg>
+                        <span>THERAPY<br>WITH<br>EVA</span>
+                    </a>
+                    <p class="footer-name">Ева Данева</p>
+                    <p class="footer-phone">+359 886 080 070</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2026 Therapy with Eva</p>
+                    <a href="obshti-uslovia.html" class="footer-link">Общи Условия</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

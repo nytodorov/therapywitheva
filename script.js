@@ -10,48 +10,50 @@ if (mobileMenuBtn) {
     });
 }
 
-// Handle dropdown toggle on mobile
-document.querySelectorAll('.dropdown > .nav-link').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', (e) => {
-        // Only handle on mobile
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            
-            const dropdown = dropdownLink.closest('.dropdown');
-            const wasActive = dropdown.classList.contains('active');
-            
-            // Close all dropdowns first
-            document.querySelectorAll('.dropdown').forEach(d => {
-                d.classList.remove('active');
-            });
-            
-            // Toggle this dropdown
-            if (!wasActive) {
-                dropdown.classList.add('active');
-            }
-        }
-    }, true); // Use capture phase
-});
-
-// Handle dropdown menu item clicks
-document.querySelectorAll('.dropdown-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.classList.remove('active');
+// Simple mobile dropdown handler - must be first
+document.addEventListener('click', (e) => {
+    // Check if we're on mobile
+    if (window.innerWidth > 768) return;
+    
+    // Check if clicked on dropdown link
+    const dropdownLink = e.target.closest('.dropdown > .nav-link');
+    if (dropdownLink) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        const dropdown = dropdownLink.closest('.dropdown');
+        const isActive = dropdown.classList.contains('active');
+        
+        // Close all dropdowns
+        document.querySelectorAll('.dropdown').forEach(d => {
+            d.classList.remove('active');
         });
-    });
-});
-
-// Handle regular nav link clicks (non-dropdown)
-document.querySelectorAll('.nav-menu > li:not(.dropdown) > .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+        
+        // Toggle this one
+        if (!isActive) {
+            dropdown.classList.add('active');
+        }
+        
+        return false;
+    }
+    
+    // Check if clicked on dropdown menu item
+    const dropdownMenuItem = e.target.closest('.dropdown-menu a');
+    if (dropdownMenuItem) {
         navMenu.classList.remove('active');
         if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-    });
-});
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        return;
+    }
+    
+    // Check if clicked on regular nav link
+    const regularLink = e.target.closest('.nav-menu > li:not(.dropdown) > .nav-link');
+    if (regularLink) {
+        navMenu.classList.remove('active');
+        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+    }
+}, true);
 
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
